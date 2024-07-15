@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="logo.ico">
 
     <link rel="stylesheet" href="css/style.css">
-    <title>Greenviro</title>
+    <title>Palbites</title>
 </head>
 <body>
     <h1>The Palbites website is still being developed by <a href="https://ch1lo.com/">Ch1lo</a>.</h1>
