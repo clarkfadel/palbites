@@ -1,0 +1,89 @@
+.login{
+    padding-top: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 50px;
+    color: #FFFFFF;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #D9D9D9;
+    padding: 30px 50px;
+    width: 20rem;
+    border-radius: 5px;
+    margin-bottom: 100px;
+}
+
+label{
+    font-size: 20px;
+    margin-bottom: -20px;
+}
+
+label:nth-child(5){
+    font-size: 15px;
+    margin-bottom: -20px;
+}
+
+input{
+    padding: 10px 20px;
+    background-color: #1B2123;
+    color: #FFFFFF;
+    border: none;
+
+    border-radius: 5px;
+}
+
+button{
+    margin-top: 20px;
+    background-color: #1B2123;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 50px;
+    font-size: 20px;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.login a{
+    text-align: end;
+    color: #1B2123;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.login h4{
+    text-align: center;
+    color: #1B2123;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.login h4 a{
+    padding-left: 10px;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 500px){
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #D9D9D9;
+        padding: 30px 20px;
+        width: 15rem;
+        border-radius: 5px;
+    }
+}

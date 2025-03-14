@@ -45,14 +45,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Palbites</title>
 </head>
 <body>
     <nav>
         <div class="nav-bar">
             <div class="nav-image">
-                <a href="index"><img src="images/logo.png" alt="Palbites logo" class="nav-logo"></a>
+                <a href="index"><img src="../images/logo.png" alt="Palbites logo" class="nav-logo"></a>
             </div>
             <div class="nav-links">
                 <ul class="nav-ul">
@@ -63,15 +64,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
     </nav>
 
-    <form action="login.php" method="POST">
-        <input type="email" name="email" placeholder="Email" value="<?= $_COOKIE['user_email'] ?? '' ?>" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <label><input type="checkbox" name="remember"> Remember Me</label>
-        <button type="submit">Login</button>
-        <a href="forgot_password.php">Forgot Password?</a>
-        <a href="signup.php">Sign Up</a>
-    </form>
+    <div class="login">
+        <h1>Login</h1>
+        <form action="login.php" method="POST">
+            <label for="">Email</label>
+            <input type="email" name="email" placeholder="Email" value="<?= $_COOKIE['user_email'] ?? '' ?>" required>
+            <label for="">Password</label>
+            <input type="password" name="password" placeholder="Password" required>
+            <label><input type="checkbox" name="remember"> Remember Me</label>
+            <button type="submit">Login</button>
+            <a href="forgot_password.php">Forgot Password?</a>
+            <h4>Need an account?<a href="signup.php">Sign Up</a></h4>
+        </form>
+    </div>
 
-    <script src="js/nav.js"></script>
+    <script src="../js/nav.js"></script>
 </body>
 </html>
