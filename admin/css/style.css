@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellota:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=La+Belle+Aurore&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+
+body{
+    background-color: #D9D9D9;
+    overflow-x: hidden;
+    transition: background-color 0.3s;
+}
+
+.container{
+    display: flex;
+}
+
+
+
+
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 100vh;
+    background-color: #1B2123;
+    padding: 20px 50px;
+}
+
+.nav-img{
+    width: 50%;
+}
+
+.nav-img img{
+    width: 100%;
+}
+
+.nav-list{
+    margin-top: 100px;
+}
+
+.nav-ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-ul li{
+    margin-bottom: 30px;
+}
+
+.nav-ul li a{
+    text-decoration: none;
+    font-size: 35px;
+    margin-left: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #FFFFFF;
+}
+
+.nav-ul li a.active{
+    margin-left: 0;
+    background-color: #D9D9D9;
+    color: #1B2123;
+    padding: 10px 20px;
+}
+
+.nav-ul li a i{
+    padding-right: 20px;
+}

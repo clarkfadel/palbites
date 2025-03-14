@@ -1,0 +1,162 @@
+.about{
+    padding-top: 200px;
+    margin: 0 200px;
+    margin-bottom: 200px;
+}
+
+.about-h1{
+    font-size: 80px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+}
+
+.about-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-left-side{
+    width: 100%;
+}
+
+.about-content{
+    margin-bottom: 30px;
+}
+
+.about-question{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.about-question h1, h2{
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
+.about-question h2:hover{
+    cursor: pointer;
+}
+
+.about-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 2s ease;
+    font-weight: 200;
+    color: #FFFFFF;
+}
+
+.about-text.show {
+    max-height: 300px;
+}
+
+.about-text:not(.show) {
+    transition: none;
+    max-height: 0;
+}
+
+.about-img{
+    width: 100%;
+}
+
+.about-img img{
+    width: 100%;
+}
+
+@media only screen and (max-width: 1629px){
+    .about{
+        padding-top: 200px;
+        margin: 0 100px;
+        margin-bottom: 200px;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .about{
+        padding-top: 200px;
+        margin: 0 50px;
+        margin-bottom: 200px;
+    }
+
+    .about-h1{
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-left-side{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .about{
+        padding-top: 200px;
+        margin: 0 50px;
+        margin-bottom: 200px;
+    }
+
+    .about-h1{
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-left-side{
+        width: 100%;
+    }
+
+    .about-question h1, h2{
+        font-size: 20px;
+        color: #FFFFFF;
+        font-weight: 400;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .about{
+        padding-top: 200px;
+        margin: 0 20px;
+        margin-bottom: 200px;
+    }
+
+    .about-h1{
+        font-size: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .about-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-left-side{
+        width: 100%;
+    }
+
+    .about-question h1, h2{
+        font-size: 20px;
+        color: #FFFFFF;
+        font-weight: 400;
+    }
+}
