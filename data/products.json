@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "name": "awdad",
+        "photo": "1741957732_brownies.svg",
+        "categories": [
+            "bread"
+        ],
+        "price": "123",
+        "stock": "123",
+        "description": "asdfa"
+    }
+]
