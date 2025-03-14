@@ -85,10 +85,10 @@ $top_products = array_slice($product_sales, 0, 10, true);
                 </div>
                 <div class="nav-list">
                     <ul class="nav-ul">
-                        <li><a href="" class="active"><i class="fa-solid fa-chart-pie"></i>Dashboard</a></li>
-                        <li><a href=""><i class="fa-solid fa-box-open"></i>Products</a></li>
-                        <li><a href=""><i class="fa-solid fa-bag-shopping"></i>Orders</a></li>
-                        <li><a href=""><i class="fa-solid fa-arrow-trend-up"></i>Stock</a></li>
+                        <li><a href="dashboard.php" class="active"><i class="fa-solid fa-chart-pie"></i>Dashboard</a></li>
+                        <li><a href="products.php"><i class="fa-solid fa-box-open"></i>Products</a></li>
+                        <li><a href="orders.php"><i class="fa-solid fa-bag-shopping"></i>Orders</a></li>
+                        <li><a href="restock_suggestion.php"><i class="fa-solid fa-arrow-trend-up"></i>Stock</a></li>
                         <li><a href="logout.php"><i class="fa-solid fa-user"></i>Logout</a></li>
                     </ul>   
                 </div>
