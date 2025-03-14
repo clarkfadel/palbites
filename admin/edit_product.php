@@ -35,7 +35,7 @@ $product = $products[$index];
     }
     ?>
 
-    <label>Price ($):</label>
+    <label>Price (₱):</label>
     <input type="number" name="price" step="0.01" value="<?= htmlspecialchars($product['price']) ?>" required><br>
 
     <label>Stock:</label>
