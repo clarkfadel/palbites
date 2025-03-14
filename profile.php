@@ -11,27 +11,21 @@ $user_file = "$user_folder/user.json";
 $orders_file = "$user_folder/orders.json";
 $history_file = "$user_folder/order_history.json";
 
-// Load user data
 $user = file_exists($user_file) ? json_decode(file_get_contents($user_file), true) : null;
 if (!$user) {
     echo "Error: User data not found.";
     exit;
 }
 
-// Load active orders
 $orders = file_exists($orders_file) ? json_decode(file_get_contents($orders_file), true) : [];
 
-// Load order history
 $order_history = file_exists($history_file) ? json_decode(file_get_contents($history_file), true) : [];
 
-// Ensure both are arrays
 $orders = is_array($orders) ? $orders : [];
 $order_history = is_array($order_history) ? $order_history : [];
 
-// Separate order status and completed orders
 $order_status = array_filter($orders, fn($order) => isset($order["status"]) && $order["status"] !== "Delivered");
 
-// Determine active section
 $activeSection = $_GET['section'] ?? 'profile';
 ?>
 

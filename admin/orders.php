@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Ensure only admin can access
 if (!isset($_SESSION["admin_logged_in"]) || $_SESSION["admin_logged_in"] !== true) {
     header("Location: login.php");
     exit;
@@ -15,22 +14,20 @@ if (is_dir($users_folder)) {
     foreach (scandir($users_folder) as $user) {
         if ($user === '.' || $user === '..') continue;
 
-        // Load active orders
         $orders_file = "$users_folder/$user/orders.json";
         if (file_exists($orders_file)) {
             $user_orders = json_decode(file_get_contents($orders_file), true) ?? [];
             foreach ($user_orders as $order) {
-                $order['customer'] = $user; // Add customer name
-                $pending_orders[] = $order; // Only pending orders are here
+                $order['customer'] = $user; 
+                $pending_orders[] = $order; 
             }
         }
 
-        // Load completed orders
         $history_file = "$users_folder/$user/order_history.json";
         if (file_exists($history_file)) {
             $user_completed_orders = json_decode(file_get_contents($history_file), true) ?? [];
             foreach ($user_completed_orders as $order) {
-                $order['customer'] = $user; // Add customer name
+                $order['customer'] = $user; 
                 $completed_orders[] = $order;
             }
         }

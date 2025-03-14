@@ -10,22 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $products[$index]['stock'] = $_POST['stock'];
     $products[$index]['description'] = $_POST['description'];
 
-    // Handle Image Upload
     if (!empty($_FILES['photo']['name'])) {
-        $old_photo = $products[$index]['photo']; // Get old image
+        $old_photo = $products[$index]['photo'];
         $photo = $_FILES['photo'];
         $photoName = time() . "_" . basename($photo['name']);
         $photoPath = "../data/uploads/$photoName";
 
-        // Move new file
         if (move_uploaded_file($photo['tmp_name'], $photoPath)) {
-            // Delete old image if it exists
             $oldPhotoPath = "../data/uploads/$old_photo";
             if (file_exists($oldPhotoPath)) {
                 unlink($oldPhotoPath);
             }
 
-            // Update image in JSON
             $products[$index]['photo'] = $photoName;
         }
     }

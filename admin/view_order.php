@@ -1,13 +1,11 @@
 <?php
 session_start();
 
-// Ensure only admin can access
 if (!isset($_SESSION["admin_logged_in"]) || $_SESSION["admin_logged_in"] !== true) {
     header("Location: login.php");
     exit;
 }
 
-// Check if customer and order are provided
 if (!isset($_GET['customer']) || !isset($_GET['order'])) {
     die("Error: Missing order number or customer.");
 }
@@ -17,12 +15,10 @@ $order_number = $_GET['order'];
 $orders_file = "../auth/users/$customer/orders.json";
 $order_history_file = "../auth/users/$customer/order_history.json";
 
-// Load orders
 $orders = file_exists($orders_file) ? json_decode(file_get_contents($orders_file), true) : [];
 $order_history = file_exists($order_history_file) ? json_decode(file_get_contents($order_history_file), true) : [];
 $all_orders = array_merge($orders, $order_history);
 
-// Find the order
 $order = null;
 foreach ($all_orders as $o) {
     if ($o['order_number'] == $order_number) {
@@ -31,12 +27,10 @@ foreach ($all_orders as $o) {
     }
 }
 
-// If order is not found
 if (!$order) {
     die("Error: Order not found.");
 }
 
-// Calculate overall total
 $overall_total = 0;
 foreach ($order['items'] as $item) {
     $overall_total += $item['quantity'] * $item['price'];

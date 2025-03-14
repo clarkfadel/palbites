@@ -16,14 +16,12 @@ $user_folder = "auth/users/" . $_SESSION['user'];
 $orders_file = "$user_folder/orders.json";
 $history_file = "$user_folder/order_history.json";
 
-// Load orders from user's folder
 $orders = file_exists($orders_file) ? json_decode(file_get_contents($orders_file), true) : [];
 $order_history = file_exists($history_file) ? json_decode(file_get_contents($history_file), true) : [];
 
-// Merge orders and history to find the order
 $all_orders = array_merge($orders, $order_history);
 $order = array_filter($all_orders, fn($o) => $o["order_number"] == $order_number);
-$order = reset($order); // Get the first (and only) match
+$order = reset($order); 
 
 if (!$order) {
     echo "Error: Order not found.";

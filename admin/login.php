@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Hardcoded admin credentials
 $admin_username = "admin";
 $admin_password = "admin123";
 

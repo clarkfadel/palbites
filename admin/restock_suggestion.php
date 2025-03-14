@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Ensure only admin can access
 if (!isset($_SESSION["admin_logged_in"]) || $_SESSION["admin_logged_in"] !== true) {
     header("Location: login.php");
     exit;
@@ -12,7 +11,6 @@ $product_sales = [];
 $weekly_sales = [];
 $current_time = time();
 
-// Scan all user orders
 if (is_dir($users_folder)) {
     foreach (scandir($users_folder) as $user) {
         if ($user === '.' || $user === '..') continue;
@@ -26,15 +24,13 @@ if (is_dir($users_folder)) {
                     $product_name = $item["name"];
                     $quantity = $item["quantity"];
                     $order_time = strtotime($order["date"]);
-                    $week_number = date("o-W", $order_time); // Year-Week format
+                    $week_number = date("o-W", $order_time); 
 
-                    // Track total sales
                     if (!isset($product_sales[$product_name])) {
                         $product_sales[$product_name] = 0;
                     }
                     $product_sales[$product_name] += $quantity;
 
-                    // Track sales per week
                     if (!isset($weekly_sales[$product_name])) {
                         $weekly_sales[$product_name] = [];
                     }
@@ -48,15 +44,13 @@ if (is_dir($users_folder)) {
     }
 }
 
-// Sort products by most sold overall
 arsort($product_sales);
 
-// Compute restock suggestions based on weekly average
 $restock_suggestions = [];
 foreach ($product_sales as $product => $total_sold) {
     $weeks_count = count($weekly_sales[$product]);
     $average_weekly_sales = $weeks_count > 0 ? $total_sold / $weeks_count : 0;
-    $suggested_restock = max(10, ceil($average_weekly_sales * 2)); // Stock for 2 weeks minimum
+    $suggested_restock = max(10, ceil($average_weekly_sales * 2)); 
 
     $restock_suggestions[] = [
         "product" => $product,
@@ -66,16 +60,14 @@ foreach ($product_sales as $product => $total_sold) {
     ];
 }
 
-// Get best-seller
 $best_seller = !empty($restock_suggestions) ? $restock_suggestions[0] : null;
 
-// Detect rising product by checking sales growth over weeks
 $rising_product = null;
 foreach ($weekly_sales as $product => $weeks) {
     $sorted_weeks = array_keys($weeks);
-    rsort($sorted_weeks); // Sort weeks from latest to oldest
+    rsort($sorted_weeks); 
 
-    if (count($sorted_weeks) < 2) continue; // Need at least 2 weeks of data
+    if (count($sorted_weeks) < 2) continue; 
 
     $latest_week = $sorted_weeks[0];
     $previous_week = $sorted_weeks[1];
@@ -86,7 +78,6 @@ foreach ($weekly_sales as $product => $weeks) {
     if ($previous_sales > 0) {
         $growth_percentage = (($latest_sales - $previous_sales) / $previous_sales) * 100;
 
-        // If sales increased by 40% or more, it's a rising product
         if ($growth_percentage >= 40) {
             $rising_product = [
                 "product" => $product,

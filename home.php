@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Load sales data from order history
 $users_folder = "auth/users";
 $product_sales = [];
 
@@ -15,11 +14,11 @@ if (is_dir($users_folder)) {
             foreach ($user_orders as $order) {
                 foreach ($order['items'] as $item) {
                     $product_name = $item['name'];
-                    $product_image = $item['image']; // Full image URL
+                    $product_image = $item['image']; 
 
                     if (!isset($product_sales[$product_name])) {
                         $product_sales[$product_name] = [
-                            'name' => $product_name,  // Ensure correct name association
+                            'name' => $product_name,  
                             'quantity' => 0,
                             'image' => $product_image
                         ];
@@ -32,7 +31,6 @@ if (is_dir($users_folder)) {
     }
 }
 
-// Sort products by sales volume (top 3)
 usort($product_sales, fn($a, $b) => $b['quantity'] - $a['quantity']);
 $best_sellers = array_slice($product_sales, 0, 3);
 ?>
@@ -96,7 +94,7 @@ $best_sellers = array_slice($product_sales, 0, 3);
                         <a href="products.php" class="best-content">
                             <div>
                                 <img src="<?= htmlspecialchars($product['image']) ?>" alt="<?= htmlspecialchars($product['name']) ?>">
-                                <h1><?= htmlspecialchars($product['name']) ?></h1> <!-- Now correctly matches the image -->
+                                <h1><?= htmlspecialchars($product['name']) ?></h1> 
                             </div>
                         </a>
                     <?php endforeach; ?>

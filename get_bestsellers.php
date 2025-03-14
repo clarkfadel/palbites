@@ -18,7 +18,6 @@ if (!$order_history) {
     die(json_encode(["error" => "Failed to decode order history"]));
 }
 
-// Count occurrences of each item
 $best_sellers = [];
 foreach ($order_history as $order) {
     foreach ($order['items'] as $item) {
@@ -35,7 +34,6 @@ foreach ($order_history as $order) {
     }
 }
 
-// Sort best sellers by quantity in descending order
 usort($best_sellers, function ($a, $b) {
     return $b['quantity'] - $a['quantity'];
 });

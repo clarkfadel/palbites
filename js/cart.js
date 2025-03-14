@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error adding to cart:", error));
     }
 
-    // Adding from products.php
     document.querySelectorAll(".products-content h6").forEach(button => {
         button.addEventListener("click", function () {
             const productElement = this.closest(".products-content");
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Adding from product-view.php
     const productViewButton = document.querySelector(".product-button h4");
     if (productViewButton) {
         productViewButton.addEventListener("click", function () {

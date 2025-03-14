@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Ensure only admin can access
 if (!isset($_SESSION["admin_logged_in"]) || $_SESSION["admin_logged_in"] !== true) {
     header("Location: login.php");
     exit;
@@ -13,12 +12,10 @@ $sales_today = 0;
 $daily_quota = 3000;
 $product_sales = [];
 
-// Scan user folders
 if (is_dir($users_folder)) {
     foreach (scandir($users_folder) as $user) {
         if ($user === '.' || $user === '..') continue;
 
-        // Load pending orders
         $orders_file = "$users_folder/$user/orders.json";
         if (file_exists($orders_file)) {
             $user_orders = json_decode(file_get_contents($orders_file), true) ?? [];
@@ -30,25 +27,21 @@ if (is_dir($users_folder)) {
             }
         }
 
-        // Load completed orders for best sellers and daily quota
         $history_file = "$users_folder/$user/order_history.json";
         if (file_exists($history_file)) {
             $user_completed_orders = json_decode(file_get_contents($history_file), true) ?? [];
             foreach ($user_completed_orders as $order) {
-                // Compute total sales dynamically
                 $order_total = 0;
                 if (isset($order["items"])) {
                     foreach ($order["items"] as $item) {
                         $item_total = ($item["price"] ?? 0) * ($item["quantity"] ?? 0);
                         $order_total += $item_total;
 
-                        // Track product sales
                         $product_name = $item["name"];
                         $product_sales[$product_name] = ($product_sales[$product_name] ?? 0) + $item["quantity"];
                     }
                 }
 
-                // Track today's sales
                 if (date("Y-m-d") === date("Y-m-d", strtotime($order["shipped_date"]))) {
                     $sales_today += $order_total;
                 }
@@ -63,7 +56,6 @@ if (isset($_GET['bestsellers'])) {
     exit;
 }
 
-// Sort products by quantity sold (descending)
 arsort($product_sales);
 $top_products = array_slice($product_sales, 0, 10, true);
 ?>

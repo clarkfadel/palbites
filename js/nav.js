@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var overlay = document.getElementById("overlay");
 
     function toggleNav(event) {
-        event.preventDefault(); // Prevent default behavior
+        event.preventDefault(); 
 
         document.body.classList.toggle("noscroll");
         navToggle.classList.toggle("change");
-        overlay.classList.toggle("show"); // Toggle overlay visibility
+        overlay.classList.toggle("show"); 
 
         if (navLinks.classList.contains("show")) {
             closeNav();
@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function openNav() {
         navLinks.classList.add("show");
         navLinks.style.transition = "opacity 0.3s ease";
-        navLinks.style.opacity = "0"; // Ensure it starts hidden
+        navLinks.style.opacity = "0";
         setTimeout(function () {
             navLinks.style.opacity = "1";
-        }, 50); // Adjust the delay as needed
+        }, 50); 
     }
 
     function closeNav() {
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navLinks.classList.remove("show");
             navLinks.style.transition = "opacity 0.3s ease-in-out";
             navLinks.style.opacity = "1";
-        }, 200); // Adjust the delay to match the transition duration
+        }, 200); 
     }
 });
 

@@ -1,5 +1,4 @@
 <?php
-// Load products from JSON
 $productsFile = "data/products.json";
 
 if (!file_exists($productsFile)) {
@@ -12,23 +11,18 @@ if (!is_array($products)) {
     $products = [];
 }
 
-// Get filters from URL
 $selectedCategory = isset($_GET["category"]) ? $_GET["category"] : null;
 $availableFilter = isset($_GET["available"]) ? true : false;
 $searchQuery = isset($_GET["search"]) ? strtolower(trim($_GET["search"])) : "";
 
-// Filter products based on category, availability, and search query
 $filteredProducts = [];
 foreach ($products as $product) {
     $productCategories = is_array($product["categories"]) ? $product["categories"] : [$product["categories"]];
     
-    // Category filtering
     $categoryMatch = !$selectedCategory || in_array($selectedCategory, $productCategories);
-    
-    // Availability filtering
+
     $availableMatch = !$availableFilter || ($product["stock"] > 0);
     
-    // Search filtering
     $nameMatch = empty($searchQuery) || strpos(strtolower($product["name"]), $searchQuery) !== false;
     
     if ($categoryMatch && $availableMatch && $nameMatch) {
@@ -159,7 +153,7 @@ $paginatedProducts = array_slice($filteredProducts, $startIndex, $productsPerPag
 
                     </div>
 
-                    <!-- Pagination (only shown if there are multiple pages and products) -->
+                    <!-- Pagination -->
                     <?php if ($totalFilteredProducts > 0 && $totalPages > 1) : ?>
                         <div class="pagination">
                             <?php if ($currentPage > 1) : ?>

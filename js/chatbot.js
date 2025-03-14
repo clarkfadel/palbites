@@ -1,4 +1,3 @@
-// Toggle chatbot visibility
 function toggleChatbot() {
     let chatbotContainer = document.getElementById("chatbot-container");
     if (chatbotContainer.classList.contains("active")) {
@@ -10,20 +9,17 @@ function toggleChatbot() {
     }
 }
 
-// Send message when Enter key is pressed
 function handleKeyPress(event) {
     if (event.key === "Enter") {
         sendMessage();
     }
 }
 
-// Send a predefined question
 function sendPredefinedMessage(message) {
     document.getElementById("chatbot-input").value = message;
     sendMessage();
 }
 
-// Send user message and get AI response
 function sendMessage() {
     const inputField = document.getElementById("chatbot-input");
     const userMessage = inputField.value.trim();
@@ -32,28 +28,24 @@ function sendMessage() {
     displayMessage(userMessage, "user");
     inputField.value = "";
 
-    // AI Response
     setTimeout(() => {
         const botResponse = getAIResponse(userMessage);
         displayMessage(botResponse, "bot");
     }, 500);
 }
 
-// Display message in chatbot with bubble styling
 function displayMessage(message, sender) {
     const chatbox = document.getElementById("chatbot-messages");
     const messageElement = document.createElement("div");
     messageElement.classList.add("message", sender);
     messageElement.innerText = message;
     chatbox.appendChild(messageElement);
-    chatbox.scrollTop = chatbox.scrollHeight; // Auto-scroll to latest message
+    chatbox.scrollTop = chatbox.scrollHeight; 
 }
 
-// AI Response System with Multiple Keywords
 function getAIResponse(message) {
     const lowerMessage = message.toLowerCase();
 
-    // List of keywords and responses
     const responses = [
         {
             keywords: ["best seller", "top item", "popular"],
@@ -153,7 +145,6 @@ function getAIResponse(message) {
         },
     ];
 
-    // Check if user message matches any keyword
     for (const item of responses) {
         if (item.keywords.some(keyword => lowerMessage.includes(keyword))) {
             return item.response;
